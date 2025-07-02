@@ -1,0 +1,457 @@
+/* General Body and Typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    /* Variabel Warna dari Video yang Lebih Gelap (Untuk Header dan Tombol Navigasi Atas) */
+    --video-header-bg: #183153; /* Biru gelap dari video untuk header */
+    --video-button-hover: #0D2644; /* Sedikit lebih gelap dari video-header-bg untuk hover */
+
+    /* Variabel Warna Asli Anda (digunakan untuk elemen lain, kecuali jika ditimpa) */
+    --primary-color: #1A237E; /* Deep Indigo - Dark Blue */
+    --primary-dark: #0D47A1; /* Even Darker Blue */
+    --accent-color: #ffc107; /* Warna tombol donasi: Amber/Orange seperti permintaan Anda */
+    --accent-dark: #e0a800; /* Warna lebih gelap untuk hover tombol donasi */
+    --text-color: #263238; /* Darker text for contrast */
+    --light-gray: #E3F2FD; /* Very light blue background */
+    --dark-gray: #546E7A; /* Medium dark gray for secondary text */
+    --border-color: #BBDEFB; /* Light blue border */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+    --shadow-strong: rgba(0, 0, 0, 0.35); /* Bayangan lebih kuat untuk tombol dari video */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: var(--video-header-bg); /* Menggunakan warna biru gelap dari video */
+    padding: 1rem 0;
+    box-shadow: 0 4px 15px rgba(24, 49, 83, 0.2); /* Bayangan disesuaikan dengan warna baru */
+    text-align: center;
+    position: sticky; /* Agar tetap di atas saat digulir */
+    top: 0;
+    z-index: 100; /* Pastikan berada di atas konten lain */
+    border-bottom: 1px solid var(--video-button-hover); /* Garis tipis di bawah header */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 8px; /* Lebih membulat sedikit */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Tambah box-shadow transition */
+    font-weight: 600;
+    position: relative; /* Untuk efek bayangan saat hover */
+}
+
+nav a:hover,
+nav a.active {
+    background-color: var(--video-button-hover); /* Warna lebih gelap saat hover/aktif */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px var(--shadow-strong); /* Bayangan lebih kuat saat hover/aktif */
+}
+
+/* Main Container Layout */
+.main-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px var(--shadow-light);
+    flex-grow: 1; /* Allows container to grow and fill space */
+}
+
+/* Content Wrapper (Campaigns and Form) */
+.content-wrapper {
+    flex: 3; /* Takes more space */
+    min-width: 300px; /* Minimum width for content */
+}
+
+/* Campaign Section */
+.campaign-section h2 {
+    text-align: center;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.campaign-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    color: var(--primary-dark);
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+}
+
+.card p {
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    flex-grow: 1; /* Allows paragraph to take available space */
+}
+
+.btn-donasi {
+    display: inline-block;
+    background-color: var(--accent-color); /* Menggunakan warna Amber/Orange */
+    color: var(--text-color); /* Menggunakan warna teks gelap untuk kontras */
+    padding: 0.9rem 1.8rem; /* Padding lebih besar */
+    border-radius: 50px; /* Bentuk lonjong seperti di video */
+    text-decoration: none;
+    text-align: center;
+    font-weight: 700; /* Lebih tebal */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px var(--shadow-medium); /* Bayangan yang jelas */
+    margin-top: auto; /* Pushes button to the bottom */
+    text-transform: uppercase; /* Huruf kapital */
+    letter-spacing: 0.8px; /* Jarak antar huruf */
+}
+
+.btn-donasi:hover {
+    background-color: var(--accent-dark); /* Warna lebih gelap untuk hover tombol Amber/Orange */
+    transform: translateY(-3px) scale(1.02); /* Efek naik dan sedikit membesar */
+    box-shadow: 0 8px 25px var(--shadow-strong); /* Bayangan lebih kuat saat hover */
+}
+
+/* Form Section */
+.form-section {
+    margin-top: 2rem;
+}
+
+.form-container {
+    background-color: #fcfcfc;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+.form-container h3 {
+    text-align: center;
+    color: var(--primary-dark);
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.form-container h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color); /* Menggunakan accent-color (Amber) */
+    border-radius: 2px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: var(--dark-gray);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container select,
+.form-container textarea {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 12px;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="email"]:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.2); /* Using primary color for focus shadow */
+    outline: none;
+}
+
+.form-container select {
+    appearance: none; /* Remove default select arrow */
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23546E7A' width='24px' height='24px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+.form-container textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-container button[type="submit"] {
+    background-color: var(--accent-color); /* Menggunakan warna Amber/Orange */
+    color: var(--text-color); /* Menggunakan warna teks gelap untuk kontras */
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-container button[type="submit"]:hover {
+    background-color: var(--accent-dark); /* Warna lebih gelap untuk hover tombol Amber/Orange */
+    transform: translateY(-2px);
+}
+
+.form-container button[type="submit"]:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Info Donasi Section (Sidebar) */
+.info-donasi {
+    flex: 1; /* Takes less space, acts as a sidebar */
+    min-width: 280px; /* Minimum width for sidebar */
+    background-color: #fcfcfc;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.total-donasi,
+.donatur-list {
+    text-align: center;
+}
+
+.total-donasi h2,
+.donatur-list h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.total-donasi h2::after,
+.donatur-list h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.total-donasi p {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.donatur-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+
+.donatur-list th,
+.donatur-list td {
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.donatur-list th {
+    background-color: var(--video-header-bg); /* Menggunakan warna biru gelap dari video */
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.donatur-list tbody tr:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+.donatur-list tbody tr:hover {
+    background-color: #CFD8DC; /* Light blue-gray on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .main-container {
+        flex-direction: column;
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .content-wrapper,
+    .info-donasi {
+        flex: auto; /* Reset flex to allow natural stacking */
+        width: 100%;
+    }
+
+    .campaign-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    nav a {
+        padding: 0.6rem 1rem;
+        margin: 0 0.3rem;
+        font-size: 0.9rem;
+    }
+
+    .main-container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .campaign-section h2,
+    .form-container h3,
+    .total-donasi h2,
+    .donatur-list h3 {
+        font-size: 1.6rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .btn-donasi {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+
+    .total-donasi p {
+        font-size: 2rem;
+    }
+
+    .donatur-list th,
+    .donatur-list td {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.8rem;
+    }
+
+    nav a {
+        display: block;
+        width: calc(100% - 1rem); /* Full width with some padding */
+        margin: 0.25rem auto;
+    }
+
+    .main-container {
+        margin: 0.5rem;
+        border-radius: 5px;
+        padding: 0.8rem;
+    }
+
+    .campaign-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .campaign-section h2,
+    .form-container h3,
+    .total-donasi h2,
+    .donatur-list h3 {
+        font-size: 1.4rem;
+    }
+
+    .total-donasi p {
+        font-size: 1.8rem;
+    }
+}

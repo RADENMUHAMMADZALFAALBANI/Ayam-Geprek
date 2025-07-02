@@ -1,0 +1,473 @@
+/* styles.css */
+
+/* --- General Styles --- */
+/* Mengatur gaya dasar untuk seluruh halaman dengan tampilan yang lebih jernih dan modern */
+html, body { /* Memastikan HTML dan Body mengisi 100% lebar dan tinggi */
+    width: 100%;
+    height: 100%;
+    margin: 0; /* Hapus margin default */
+    padding: 0; /* Hapus padding default */
+    overflow-x: hidden; /* Mencegah scrollbar horizontal yang tidak diinginkan */
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif; /* Font Inter untuk tampilan lebih modern dan jernih */
+    background-color: #f8f9fa; /* Warna latar belakang halaman yang lembut dan bersih */
+    color: #343a40; /* Warna teks utama yang gelap untuk kontras baik */
+    line-height: 1.6; /* Jarak antar baris untuk keterbacaan optimal */
+    -webkit-font-smoothing: antialiased; /* Membuat teks terlihat lebih halus di macOS/iOS */
+    -moz-osx-font-smoothing: grayscale; /* Membuat teks terlihat lebih halus di Firefox macOS */
+}
+
+/* Container responsif untuk konten utama */
+.container {
+    max-width: 1200px; /* Lebar maksimum kontainer */
+    margin: 20px auto; /* Pusatkan kontainer dengan margin atas/bawah */
+    padding: 0 20px; /* Padding samping untuk ruang bernapas */
+}
+
+/* --- Header Section (Digunakan di index.php, fitur.php) --- */
+.header {
+    background: #183153; /* Biru gelap modern */
+    color: #fff;
+    padding: 0 0; /* Mengatur padding agar logo dan nav bisa diatur dengan padding internal */
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 16px rgba(24,49,83,0.10); /* Bayangan lebih modern */
+    position: sticky; /* Header akan tetap di atas saat di-scroll */
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #22396a; /* Garis bawah tipis */
+    background-color: #183153 !important; /* Pastikan tidak ada background putih */
+}
+
+.header .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 32px; /* Padding untuk logo di dalam header */
+    height: 64px; /* Tinggi link logo agar sejajar dengan header */
+}
+
+.header .logo {
+    height: 44px;
+    width: 44px;
+    border-radius: 10px; /* Sudut membulat untuk logo */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    margin-right: 14px;
+    background: #fff; /* Latar belakang putih untuk logo */
+    object-fit: cover;
+}
+
+/* Menyembunyikan judul h1 di header jika ada, karena mungkin mengganggu ruang */
+.header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+    display: none; /* Menyembunyikan h1 untuk memberi ruang navigasi jika hanya logo yang penting */
+}
+
+/* Perubahan untuk .main-nav: Kedua tombol biru semua, dengan sudut membulat */
+.main-nav {
+    display: flex;
+    gap: 8px; /* Jarak antar item navigasi */
+    align-items: center;
+    padding-right: 32px; /* Padding di sisi kanan navigasi */
+    background: transparent !important; /* Pastikan tidak ada background putih */
+}
+
+.main-nav a {
+    color: #fff; /* Warna teks putih */
+    background: transparent; /* Latar belakang transparan */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.08rem; /* Ukuran font sedikit lebih besar */
+    padding: 10px 28px; /* Padding yang lebih baik untuk tombol */
+    border-radius: 8px; /* Sudut membulat yang pas */
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s; /* Transisi halus */
+    position: relative;
+    letter-spacing: 0.2px;
+    border: none;
+    outline: none;
+    display: inline-block;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+    background: linear-gradient(90deg, #0077ff 60%, #0056b3 100%); /* Efek gradien biru saat hover/aktif */
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0,119,255,0.10); /* Bayangan saat hover */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    transform: translateY(-2px) scale(1.04); /* Efek naik dan sedikit membesar saat hover */
+}
+
+/* --- Banner Section (Digunakan di index.php, fitur.php) --- */
+.banner {
+    width: 100%; /* Lebar penuh */
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #0056b3; /* Latar belakang biru untuk mengisi ruang yang mungkin kosong */
+    min-height: 180px; /* Tinggi minimum banner */
+    display: flex; /* Untuk memusatkan gambar/konten jika perlu */
+    align-items: center; /* Memusatkan vertikal */
+    justify-content: center; /* Memusatkan horizontal */
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+}
+
+.banner img {
+    width: 100%; /* Gambar mengisi lebar penuh */
+    height: auto; /* Tinggi otomatis */
+    display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa distorsi */
+    min-height: 180px; /* Pastikan gambar memiliki minimal tinggi yang sama dengan section */
+}
+
+/* --- Navigation Buttons (INFAQ, ZAKAT, DONASI - Digunakan di index.php, fitur.php) --- */
+.nav-buttons {
+    display: flex;
+    justify-content: center; /* Pusatkan tombol */
+    gap: 20px; /* Jarak antar tombol */
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Bayangan lembut */
+    border-radius: 12px; /* Sudut membulat yang lebih besar untuk kontainer */
+    flex-wrap: wrap; /* Agar responsif di layar kecil */
+}
+
+.donation-btn {
+    background-color: #28a745; /* Hijau cerah yang lebih profesional */
+    color: white;
+    padding: 12px 25px; /* Disesuaikan agar lebih proporsional dengan lonjong */
+    text-decoration: none;
+    border-radius: 50px; /* Gunakan nilai fix untuk bentuk lonjong konsisten */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Bayangan lebih kuat */
+    text-transform: uppercase; /* Teks kapital */
+    letter-spacing: 0.5px; /* Jarak antar huruf */
+}
+
+.donation-btn:hover {
+    background-color: #218838; /* Hijau lebih gelap saat hover */
+    transform: translateY(-3px); /* Efek naik lebih banyak saat hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* Bayangan lebih kuat saat hover */
+}
+
+/* --- Donation Card (Campaign di index.php) --- */
+.donation-card {
+    background-color: white;
+    border-radius: 12px; /* Sudut lebih membulat untuk tampilan modern */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Bayangan yang lebih dalam dan lembut */
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column; /* Default tata letak kolom untuk mobile */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus saat hover */
+    padding: 15px; /* Menambahkan padding di sekitar seluruh kartu untuk efek "mengambang" */
+    border: 1px solid #e0e0e0; /* Tambahkan border tipis untuk definisi */
+}
+
+.donation-card:hover {
+    transform: translateY(-7px); /* Efek naik lebih jauh untuk card saat hover */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2); /* Bayangan lebih kuat saat hover */
+}
+
+@media (min-width: 768px) {
+    .donation-card {
+        flex-direction: row; /* Tata letak baris untuk desktop */
+        align-items: center; /* Memusatkan item secara vertikal di desktop */
+        padding: 20px; /* Padding lebih besar di desktop untuk efek mengambang */
+    }
+}
+
+.donation-image {
+    width: 100%;
+    height: 180px; /* Tinggi gambar kartu donasi di index.php/fitur.php agar lebih memanjang */
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa distorsi, bisa ada pemotongan */
+    border-radius: 10px; /* Sudut gambar konsisten dengan card */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Bayangan di sekitar gambar */
+}
+
+@media (min-width: 768px) {
+    .donation-image {
+        width: 40%; /* Lebar di desktop */
+        height: 180px; /* Mempertahankan tinggi yang konsisten dengan mobile */
+        border-top-right-radius: 10px; /* Konsisten dengan 10px */
+        border-bottom-left-radius: 10px; /* Konsisten dengan 10px */
+        margin-right: 25px; /* Jarak antara gambar dan konten di desktop, sedikit dilebarkan */
+    }
+}
+
+.donation-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit; /* Menggunakan warna teks dari parent */
+}
+
+.donation-content h2 {
+    color: #0056b3; /* Warna judul kartu */
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.donation-content .status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.1em; /* Sedikit lebih kecil untuk proporsi */
+    color: #555;
+    font-weight: 600;
+}
+
+.donation-content .dot {
+    background-color: #28a745; /* Warna dot status mengikuti hijau cerah utama yang baru */
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.donation-content .amount {
+    font-weight: bold;
+    color: #007bff; /* Biru terang untuk jumlah */
+}
+
+.donate-button {
+    background-color: #ffc107; /* Kuning keemasan yang lebih cerah dan menarik */
+    color: #343a40; /* Teks gelap untuk kontras dengan kuning */
+    padding: 12px 28px; /* Padding lebih lebar untuk efek lonjong yang pas */
+    text-align: center;
+    border-radius: 50px; /* Gunakan nilai fix untuk bentuk lonjong konsisten */
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Bayangan kecil */
+}
+
+.donate-button:hover {
+    background-color: #e0a800; /* Kuning keemasan lebih gelap saat hover */
+    transform: translateY(-3px); /* Efek naik lebih banyak saat hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* Bayangan lebih kuat saat hover */
+}
+
+/* --- Footer (Digunakan di index.php, fitur.php) --- */
+footer {
+    background-color: #34495e; /* Warna biru gelap keabu-abuan untuk footer */
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+.footer-content p {
+    margin: 8px 0;
+}
+
+/* --- Responsive adjustments --- */
+/* Penyesuaian untuk tampilan mobile */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Header menjadi kolom */
+        text-align: center;
+        padding: 10px 15px; /* Padding header di mobile */
+    }
+    .header .logo-link {
+        margin-right: 0; /* Hapus margin kanan di mobile */
+        margin-bottom: 10px; /* Tambah margin bawah untuk logo */
+    }
+    .main-nav {
+        margin-top: 10px; /* Sedikit margin di atas nav */
+        flex-direction: row; /* Navigasi tetap baris di mobile */
+        justify-content: center; /* Pusatkan tombol nav di mobile */
+        width: 100%; /* Agar bisa flex-wrap dengan benar */
+        gap: 8px; /* Jarak antar item nav di mobile */
+    }
+    .main-nav a {
+        padding: 8px 15px; /* Padding lebih kecil di mobile */
+        flex-grow: 1; /* Biarkan tombol sedikit meregang jika perlu */
+    }
+    .nav-buttons {
+        flex-direction: column; /* Tombol navigasi menjadi kolom */
+        gap: 10px;
+    }
+    .donation-btn {
+        width: 90%; /* Tombol donasi memenuhi lebar */
+        margin: 0 auto;
+    }
+    .donation-card {
+        margin: 20px 10px; /* Margin samping lebih kecil di mobile */
+    }
+    .campaign-grid .card {
+        width: 100%; /* Kartu donasi di donasi.php akan penuh di mobile */
+    }
+    .content-wrapper {
+        flex-direction: column; /* Konten utama di donasi.php menjadi kolom */
+    }
+    .form-section {
+        min-width: unset; /* Hapus min-width di mobile */
+        width: 100%;
+    }
+}
+
+
+/* --- Styles for bayar.php (Form Pembayaran) --- */
+/* Gaya formulir pembayaran */
+form { /* Ini untuk form di bayar.php */
+    max-width: 600px;
+    margin: 30px auto; /* Margin atas/bawah lebih besar */
+    padding: 30px; /* Padding lebih besar */
+    background: white;
+    border-radius: 12px; /* Sudut lebih membulat */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Bayangan lebih kuat */
+    border: 1px solid #e0e0e0;
+}
+
+/* Penyesuaian untuk tautan navigasi di bayar.php */
+body > nav { /* Menggunakan selector lebih spesifik untuk nav di body */
+    background-color: #e9ecef; /* Latar belakang abu-abu terang */
+    padding: 15px 20px;
+    margin-bottom: 25px; /* Margin bawah lebih besar */
+    text-align: center;
+    border-radius: 8px; /* Sudut lebih membulat */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+body > nav a {
+    background-color: #007bff; /* Tombol biru cerah (primary blue) */
+    color: white;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px; /* Padding sedikit lebih besar */
+    text-decoration: none;
+    border-radius: 50px; /* Bentuk kapsul penuh */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Bayangan sedikit */
+}
+body > nav a.active {
+    background-color: #0056b3; /* Biru lebih gelap saat aktif */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+body > nav a:hover {
+    background-color: #0056b3; /* Konsisten dengan active */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+/* --- Styles for edit.php (Halaman Admin) --- */
+/* Menggunakan prefix 'admin-' untuk menghindari konflik dengan gaya utama */
+.admin-header {
+    background: #2c3e50; /* Biru gelap keabu-abuan untuk admin header */
+    color: white;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.admin-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+.admin-container {
+    padding: 25px; /* Padding lebih besar */
+    max-width: 650px; /* Lebar maksimum sedikit lebih besar */
+    margin: auto;
+    background: white;
+    margin-top: 30px; /* Margin atas lebih besar */
+    border-radius: 10px; /* Sudut lebih membulat */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Bayangan lebih menonjol */
+    border: 1px solid #e0e0e0;
+}
+.form-group {
+    margin-bottom: 20px; /* Margin bawah lebih besar */
+}
+.admin-container label {
+    display: block;
+    margin-bottom: 8px; /* Margin bawah lebih besar */
+    font-weight: bold;
+    color: #555;
+    font-size: 1.05em; /* Ukuran font label sedikit lebih besar */
+}
+.admin-container input[type="text"],
+.admin-container textarea,
+.admin-container input[type="file"] { /* Tambahkan input file */
+    width: 100%;
+    padding: 12px; /* Padding input lebih besar */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Sudut input lebih membulat */
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #007bff; /* Warna biru saat fokus */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Efek glow saat fokus */
+    outline: none; /* Hapus outline default */
+}
+.admin-btn {
+    background: #007bff; /* Biru cerah (primary blue) untuk tombol admin */
+    padding: 12px 20px; /* Padding lebih besar */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Sudut membulat */
+    cursor: pointer;
+    font-size: 1.05em; /* Ukuran font lebih besar */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.admin-btn:hover {
+    background: #0056b3; /* Biru lebih gelap saat hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.error {
+    color: #dc3545; /* Warna merah bootstrap */
+    margin-bottom: 15px;
+    font-weight: bold;
+    background-color: #f8d7da; /* Latar belakang merah muda */
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+.current-img {
+    width: 100%;
+    max-width: 300px; /* Mengurangi lebar maksimum gambar di halaman admin */
+    height: auto;
+    max-height: 200px; /* Mengurangi tinggi maksimum gambar di halaman admin */
+    object-fit: contain;
+    margin-top: 15px; /* Margin lebih besar */
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Sudut lebih membulat */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.admin-container a {
+    color: #007bff; /* Biru cerah untuk tautan admin */
+    text-decoration: none;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+.admin-container a:hover {
+    color: #0056b3; /* Biru lebih gelap saat hover */
+    text-decoration: underline;
+}
